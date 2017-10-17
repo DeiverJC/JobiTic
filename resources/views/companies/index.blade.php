@@ -6,32 +6,31 @@
 
     <div class="col-md-8">
 
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <h2>
-                    Mis vacantes
-                    <span class="pull-right">
-                        <a href="#" class="btn btn-primary">Crear vacante</a>
-                    </span>
-                </h2>
+        <div class="card">
+            <h3 class="card-header">
+                Mis vacantes
 
-                Aún no publica vacantes.
+                <span class="float-right">
+                        <a href="#" class="btn btn-info">Crear vacante</a>
+                </span>
+            </h3>
+            <div class="card-body">
+                <p class="card-text">Aún no publica vacantes.</p>
             </div>
         </div>
 
     </div>
     <div class="col-md-4">
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h5>
-                    Bienvenido(a) a JobiTic la bolsa de empleo
-                    pública donde podrá encontrar el Verdadero talento TIC
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Bienvenido(a) a JobiTic donde encontrar talento TIC es muy facil.
                 </h5>
-                <h4 class="company-title">Nombre de la empresa</h4>
-                <p>Actividad de la empresa</p>
-                <p>Fecha de inscripción: 16-10-2017</p>
-                <a href="{{ route('company.create') }}" class="btn btn-primary">Actualizar información</a>
+                <h3 class="card-title">Nombre de la empresa</h3>
+                <p class="card-text">Actividad de la empresa</p>
+                <p class="card-text">Fecha de inscripción: 16-10-2017</p>
+                <a href="{{ route('company.create') }}" class="btn btn-info float-right">Actualizar información</a>
             </div>
         </div>
 
