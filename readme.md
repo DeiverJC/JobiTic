@@ -1,4 +1,5 @@
-##JobiTic Project
+JobiTic
+==========
 
 ## Acerca de JobiTic
 
