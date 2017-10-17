@@ -14,12 +14,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/froala_blocks.css') }}" rel="stylesheet">
 
 </head>
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
 
             <div class="container">
 
@@ -33,15 +34,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        {{-- <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                     <ul class="navbar-nav">
                         @if (Auth::guest())
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Iniciar Sesión</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Registrarse</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
@@ -54,7 +55,7 @@
                                         <a class="nav-link text-black" href="{{ url('/logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST"
@@ -78,6 +79,34 @@
             </div>
         </div>
     </div>
+    <br>
+    <footer class="fdb-block footer-small">
+        <div class="container">
+          <div class="row align-items-center text-center">
+            <div class="col-12 col-lg-4 text-lg-left">
+              &copy; 2017 {{ config('app.name', 'Laravel') }}
+            </div>
+
+            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+              <h2 class="text-gray-dark">{{ config('app.name', 'Laravel') }}</h2>
+            </div>
+
+            <div class="col-12 col-lg-4 text-lg-right mt-4 mt-lg-0">
+              <ul class="nav justify-content-lg-end justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Privacidad</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Terminos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Acerca de</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

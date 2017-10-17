@@ -9,11 +9,11 @@
     </div>
 
     <div class="col-md-12">
-        <div class="card text-center">
+        <div class="card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#tab_basicInfo">Información básica</a>
+                        <a class="nav-link active" href="#tab_basicInfo">Datos de la Empresa</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Resumen</a>
@@ -22,7 +22,7 @@
             </div>
             <div class="card-body">
 
-                @include('partials.form')
+                @include('companies.partials.form')
 
           </div>
     </div>
