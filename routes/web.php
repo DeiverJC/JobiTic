@@ -18,6 +18,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('company', 'CompanyInformationController', [
+Route::resource('company', 'CompanyInfoController', [
     'except' => ['destroy']
 ]);

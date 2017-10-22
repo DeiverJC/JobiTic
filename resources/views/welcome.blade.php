@@ -83,8 +83,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Persona</a>
-                    <a href="#">Empresa</a>
+                    <a href="{{ route('register') }}">Persona</a>
+                    <a href="{{ route('register') }}">Empresa</a>
                 </div>
             </div>
         </div>

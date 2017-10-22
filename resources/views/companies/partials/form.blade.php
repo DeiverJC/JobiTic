@@ -28,7 +28,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('email', 'E-mail address') !!}
-                {!! Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Correo electronico']) !!}
+                {!! Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'micorreo@email.com', 'disabled' => 'disabled']) !!}
             </div>
         </div>
     </div>
@@ -102,10 +102,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            {!! Form::label('phone_ind', '*Teléfono') !!}
+            {!! Form::label('phone_indic', '*Teléfono') !!}
             <div class="form-group form-row">
                 <div class="col-md-3">
-                    {!! Form::text('phone_ind', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
+                    {!! Form::text('phone_indic', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
                 </div>
                 <div class="col-md-6">
                     {!! Form::text('phone_num', '', ['class' => 'form-control', 'placeholder' => 'Teléfono']) !!}
@@ -158,8 +158,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('surname', '*Apellidos del encargado') !!}
-                {!! Form::text('surname', '', ['class' => 'form-control', 'placeholder' => 'Apellidos']) !!}
+                {!! Form::label('surnames', '*Apellidos del encargado') !!}
+                {!! Form::text('surnames', '', ['class' => 'form-control', 'placeholder' => 'Apellidos']) !!}
             </div>
         </div>
     </div>
@@ -186,7 +186,7 @@
             {!! Form::label('phone_ind_hr', '*Teléfono') !!}
             <div class="form-group form-row">
                 <div class="col-md-3">
-                    {!! Form::text('phone_ind_hr', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
+                    {!! Form::text('phone_indic_hr', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
                 </div>
                 <div class="col-md-6">
                     {!! Form::text('phone_num_hr', '', ['class' => 'form-control', 'placeholder' => 'Teléfono']) !!}
@@ -200,7 +200,7 @@
             {!! Form::label('phone2_ind_hr', 'Teléfono alternativo') !!}
             <div class="form-group form-row">
                 <div class="col-md-3">
-                    {!! Form::text('phone2_ind_hr', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
+                    {!! Form::text('phone2_indic_hr', '', ['class' => 'form-control', 'placeholder' => 'Ind.']) !!}
                 </div>
                 <div class="col-md-6">
                     {!! Form::text('phone2_num_hr', '', ['class' => 'form-control', 'placeholder' => 'Teléfono alternativo']) !!}
@@ -212,8 +212,6 @@
         </div>
     </div>
 
-
-
-
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+
 {!! Form::close() !!}
