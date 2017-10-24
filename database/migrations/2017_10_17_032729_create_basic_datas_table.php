@@ -26,7 +26,7 @@ class CreateBasicDatasTable extends Migration
             $table->enum('nature', ['privada', 'pública', 'mixta'])->nullable();    //Naturaleza
 
             //Foreign Key
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();

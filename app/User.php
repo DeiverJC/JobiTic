@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //------------Start Relationship
+    //------------Start Relationship------------
 
     /**
      * Get the BasicData record associated with the user.
@@ -58,10 +58,12 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany('App\Role')->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    //------------End Relationship
+    //------------End Relationship------------
+
+    //------------Start functions roles------------
 
     public function authorizeRoles($roles)
     {
@@ -94,5 +96,7 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    //------------End functions roles------------
 
 }

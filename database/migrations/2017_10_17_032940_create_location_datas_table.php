@@ -17,21 +17,21 @@ class CreateLocationDatasTable extends Migration
             $table->increments('id');
 
             //LocationData
-            $table->string('country', 100);                     #Despúes Crear DB paises para relacionar.
-            $table->string('departament', 100)->nullable();     #Despúes Crear DB paises para relacionar.
-            $table->string('municipality', 100)->nullable();    #Despúes Crear DB paises para relacionar.
-            $table->string('address', 100)->nullable();         //Dirección
-            $table->Integer('phone_indic');                 //Indicativo del telefono
-            $table->Integer('phone_num');                       //Número de Teléfono
-            $table->Integer('phone_ext')->nullable();           //Extensión del telefono
-            $table->Integer('phone2_indic')->nullable();        //Indicativo del telefono 2
-            $table->Integer('phone2_num')->nullable();          //Número de Teléfono 2
-            $table->Integer('phone2_ext')->nullable();          //Extensión del telefono 2
-            $table->Integer('celphone')->nullable();            //Celular
-            $table->string('website')->nullable();              //Página Web
+            $table->string('country', 100);                                         #Despúes Crear DB paises para relacionar.
+            $table->string('departament', 100)->nullable();                         #Despúes Crear DB paises para relacionar.
+            $table->string('municipality', 100)->nullable();                        #Despúes Crear DB paises para relacionar.
+            $table->string('address', 100)->nullable();                             //Dirección
+            $table->Integer('phone_indic');                                         //Indicativo del telefono
+            $table->Integer('phone_num');                                           //Número de Teléfono
+            $table->Integer('phone_ext')->nullable();                               //Extensión del telefono
+            $table->Integer('phone2_indic')->nullable();                            //Indicativo del telefono 2
+            $table->Integer('phone2_num')->nullable();                              //Número de Teléfono 2
+            $table->Integer('phone2_ext')->nullable();                              //Extensión del telefono 2
+            $table->Integer('celphone')->nullable();                                //Celular
+            $table->string('website')->nullable();                                  //Página Web
 
             //Foreign Key
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
