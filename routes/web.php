@@ -18,6 +18,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('company', 'CompanyInfoController', [
-    'except' => ['destroy']
-]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
+});

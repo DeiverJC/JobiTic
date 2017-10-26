@@ -7,6 +7,7 @@ use App\ContactInfo;
 use App\LocationData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CompanyInfoRequest;
 
 class CompanyInfoController extends Controller
 {
@@ -36,7 +37,7 @@ class CompanyInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyInfoRequest $request)
     {
         Auth::user()->basicData()->create($request->all());
         Auth::user()->locationData()->create($request->all());
@@ -48,6 +49,7 @@ class CompanyInfoController extends Controller
     /**
      * Display the specified resource.
      *
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

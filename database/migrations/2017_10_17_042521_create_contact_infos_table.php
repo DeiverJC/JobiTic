@@ -21,8 +21,8 @@ class CreateContactInfosTable extends Migration
             $table->string('surnames', 50);                                                 //Apellidos
             $table->enum('position', ['presidente', 'director', 'gerente',
                                       'jefe', 'coordinador', 'analista']);                  //Cargo
-            $table->string('email')->nullable();                                            //Correo
-            $table->integer('phone_indic_hr');                                              //Indicativo del telefono HR
+            $table->string('email')->unique();                                            //Correo
+            $table->integer('phone_indic_hr')->nullable();                                              //Indicativo del telefono HR
             $table->integer('phone_num_hr');                                                //Número de Teléfono HR
             $table->integer('phone_ext_hr')->nullable();                                    //Extensión del telefono HR
             $table->integer('phone2_indic_hr')->nullable();                                 //Indicativo del telefono 2 HR

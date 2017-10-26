@@ -21,7 +21,7 @@ class CreateLocationDatasTable extends Migration
             $table->string('departament', 100)->nullable();                         #Despúes Crear DB paises para relacionar.
             $table->string('municipality', 100)->nullable();                        #Despúes Crear DB paises para relacionar.
             $table->string('address', 100)->nullable();                             //Dirección
-            $table->Integer('phone_indic');                                         //Indicativo del telefono
+            $table->Integer('phone_indic')->nullable();                                         //Indicativo del telefono
             $table->Integer('phone_num');                                           //Número de Teléfono
             $table->Integer('phone_ext')->nullable();                               //Extensión del telefono
             $table->Integer('phone2_indic')->nullable();                            //Indicativo del telefono 2

@@ -14,7 +14,7 @@ class BasicData extends Model
     protected $fillable = [
         'business_name', 'legal_repre', 'type_company',
         'hierarchy', 'economic_activity', 'num_workers',
-        'nature'
+        'nature',
     ];
 
     /**
