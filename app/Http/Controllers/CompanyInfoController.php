@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\BasicData;
 use App\ContactInfo;
 use App\LocationData;
@@ -43,13 +44,15 @@ class CompanyInfoController extends Controller
         Auth::user()->locationData()->create($request->all());
         Auth::user()->contactInfo()->create($request->all());
 
-        return redirect()->route('company.index');
+        return redirect()
+                ->route('company.index')
+                ->with('status', 'Información guardada exitosamente!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * 
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -66,7 +69,15 @@ class CompanyInfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Auth::user()
+                    ->join('basic_datas', 'users.id', '=', 'basic_datas.user_id')
+                    ->join('location_datas', 'users.id', '=', 'location_datas.user_id')
+                    ->join('contact_infos', 'users.id', '=', 'contact_infos.user_id')
+                    ->where('users.id', '=', $id)
+                    ->select('basic_datas.*', 'location_datas.*', 'contact_infos.*')
+                    ->get();
+
+       return view('companies.edit', compact('data'));
     }
 
     /**
@@ -76,9 +87,17 @@ class CompanyInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyInfoRequest $request, $id)
     {
-        //
+        $basic_data = $request->only(['business_name', 'legal_repre', 'type_company',
+        'hierarchy', 'economic_activity', 'num_workers',
+        'nature']);
+
+        User::find($id)->basicData()->save($basic_data);
+
+        return redirect()
+                ->route('company.index')
+                ->with('status', 'Datos actualizados exitosamente!!');
     }
 
     /**
