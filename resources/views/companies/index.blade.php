@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 
-    <div class="row">
+
+@section('content')
+
+    <div class="col-md-8">
+
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
         @endif
-    </div>
-
-@section('content')
-
-    <div class="col-md-8">
 
         <div class="card">
             <h3 class="card-header">
@@ -34,11 +33,14 @@
                 <h5 class="card-title">
                     Bienvenido(a) a JobiTic donde encontrar talento TIC es muy facil.
                 </h5>
-                <h3 class="card-title">Nombre de la empresa</h3>
-                <p class="card-text">Actividad de la empresa</p>
+                @if(!empty($dataUser))
+                <h3 class="card-title">{{ $dataUser->business_name }}</h3>
+                <p class="card-text">{{ $dataUser->economic_activity }}</p>
                 <p class="card-text">Fecha de inscripción: 16-10-2017</p>
-                <a href="{{ route('company.edit', Auth::user()) }}" class="btn btn-info">editar</a>
-                <a href="{{ route('company.create') }}" class="btn btn-info float-right">Actualizar información</a>
+                <a href="{{ route('company.edit', Auth::user()) }}" class="btn btn-info float-right">
+                    Actualizar información
+                </a>
+                @endif
             </div>
         </div>
 

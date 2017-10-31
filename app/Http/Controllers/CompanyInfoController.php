@@ -19,7 +19,8 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        return view('companies.index');
+        $dataUser = Auth::user()->basicData()->first();
+        return view('companies.index', compact('dataUser'));
     }
 
     /**
@@ -89,15 +90,23 @@ class CompanyInfoController extends Controller
      */
     public function update(CompanyInfoRequest $request, $id)
     {
-        $basic_data = $request->only(['business_name', 'legal_repre', 'type_company',
-        'hierarchy', 'economic_activity', 'num_workers',
-        'nature']);
+        $bd = $request->only(['business_name', 'legal_repre', 'type_company',
+        'hierarchy', 'economic_activity', 'num_workers','nature',]);
 
-        User::find($id)->basicData()->save($basic_data);
+        $ld = $request->only(['country', 'departament', 'municipality', 'address',
+        'phone_indic', 'phone_num', 'phone_ext','phone2_indic', 'phone2_num', 'phone2_ext',
+        'celphone', 'website',]);
 
-        return redirect()
-                ->route('company.index')
-                ->with('status', 'Datos actualizados exitosamente!!');
+        $ci = $request->only(['name', 'surnames', 'position', 'email',
+        'phone_indic_hr', 'phone_num_hr', 'phone_ext_hr', 'phone2_indic_hr', 'phone2_num_hr',
+        'phone2_ext_hr',]);
+
+        Auth::user()->basicData()->update($bd);
+        Auth::user()->locationData()->update($ld);
+        Auth::user()->contactInfo()->update($ci);
+
+        return redirect()->route('company.index')->with('status', 'Datos actualizados');
+
     }
 
     /**

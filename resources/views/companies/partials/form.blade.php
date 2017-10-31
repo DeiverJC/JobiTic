@@ -52,8 +52,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('email', 'E-mail address') !!}
-                {!! Form::text('email', '', ['class'       => 'form-control',
-                                             'placeholder' => 'micorreo@email.com',
+                {!! Form::text('email', Auth::user()->email, ['class'       => 'form-control',
                                              'disabled'    => 'disabled']) !!}
             </div>
         </div>

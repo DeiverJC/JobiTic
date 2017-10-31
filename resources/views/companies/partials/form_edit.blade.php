@@ -1,5 +1,5 @@
 
-{!! Form::open(['route' => ['company.update', Auth::user()->id], 'method' => 'put']) !!}
+{!! Form::open(['route' => ['company.update', Auth::user()], 'method' => 'put']) !!}
 
 @foreach($data as $dt)
 {{-- - - - - - - - - Basic Data - - - - - - - - --}}
@@ -39,7 +39,7 @@
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('legal_repre') ? ' has-error' : '' }}">
                 {!! Form::label('legal_repre', '*Representante legal') !!}
-                {!! Form::text('legal_repre', $dt->num_workers, ['class'       => 'form-control',
+                {!! Form::text('legal_repre', $dt->legal_repre, ['class'       => 'form-control',
                                                    'placeholder' => 'Representante legal',
                                                    'required'    => 'required']) !!}
 
@@ -72,7 +72,7 @@
                 {!! Form::label('nature', 'Naturaleza') !!}
                 {!! Form::select('nature',
                     ['1' => 'Privada', '2' => 'Pública', '3' => 'Mixta'], $dt->nature,
-                    ['class' => 'form-control', 'placeholder' => 'Elija una opción...'] ) !!}
+                                                        ['class' => 'form-control'] ) !!}
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
                 {!! Form::label('hierarchy', 'Jerarquía') !!}
                 {!! Form::select('hierarchy',
                     ['1' => 'Principal', '2' => 'Sucursal'], $dt->hierarchy,
-                    ['class' => 'form-control', 'placeholder' => 'Elija una opción...'] ) !!}
+                                            ['class' => 'form-control'] ) !!}
             </div>
         </div>
         <div class="col-md-6">

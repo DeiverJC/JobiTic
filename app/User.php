@@ -63,6 +63,14 @@ class User extends Authenticatable
 
     //------------End Relationship------------
 
+    /*public function hasInfo()
+    {
+        $data = Auth::user()->basicData()->get();
+
+        return $data;
+
+    }*/
+
     //------------Start functions roles------------
 
     public function authorizeRoles($roles)

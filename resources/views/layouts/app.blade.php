@@ -23,10 +23,15 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
 
             <div class="container">
-
+            @auth
+                <a class="navbar-brand" href="{{ route('company.index') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            @else
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+            @endauth
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                         aria-label="Toggle navigation">
