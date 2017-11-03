@@ -17,12 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
-});
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'registerInfo'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('company', 'CompanyInfoController', ['except' => ['destroy', 'create']]);
-});
+Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
+
 

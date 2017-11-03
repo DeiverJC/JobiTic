@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class registerInfo
 {
@@ -16,12 +15,15 @@ class registerInfo
      */
     public function handle($request, Closure $next)
     {
-        $data = $request->user()->basicData;
-        //dd(empty($data->business_name));
-        if($data->business_name != ''){
-             return redirect('company/create');
+
+        /*
+        / Avoid leaving the creation view until the data is recorded.
+        */
+        if(auth()->user()->basicData)
+        {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('company/create');
     }
 }
