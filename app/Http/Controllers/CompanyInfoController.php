@@ -89,8 +89,6 @@ class CompanyInfoController extends Controller
             ->get();
 
        return view('companies.edit', compact('data'));
-
-       //return view('companies.test_tabs');
     }
 
     /**

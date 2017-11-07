@@ -17,7 +17,7 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos de la Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile{{route('company.show')}}" role="tab" aria-controls="profile" aria-selected="false">Resumen</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Resumen</a>
                     </li>
                 </ul>
             </div>

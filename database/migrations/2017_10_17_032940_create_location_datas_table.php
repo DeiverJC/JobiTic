@@ -27,7 +27,7 @@ class CreateLocationDatasTable extends Migration
             $table->Integer('phone2_indic')->nullable();                            //Indicativo del telefono 2
             $table->Integer('phone2_num')->nullable();                              //Número de Teléfono 2
             $table->Integer('phone2_ext')->nullable();                              //Extensión del telefono 2
-            $table->Integer('celphone')->nullable();                                //Celular
+            $table->bigInteger('celphone')->nullable();                                //Celular
             $table->string('website')->nullable();                                  //Página Web
 
             //Foreign Key
