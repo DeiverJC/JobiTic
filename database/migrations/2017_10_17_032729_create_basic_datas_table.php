@@ -19,7 +19,11 @@ class CreateBasicDatasTable extends Migration
             //BasicData
             $table->string('business_name', 100);                                   //Razon social
             $table->string('legal_repre');                                          //Representante legal
-            $table->string('type_company', 50)->nullable();                         #Cambiar a enum despues.
+            $table->enum('type_company', [
+                'anonima', 'cooperativa', 'comandita', 'empresa asociativa',
+                'empresa unipersonal', 'sociedad colectiva', 'persona natural',
+                'otra', 'no definida'
+            ])->nullable();
             $table->enum('hierarchy', ['principal', 'sucursal'])->nullable();       //Jerarquia
             $table->string('economic_activity');                                    #Cambiar a enum despues.
             $table->integer('num_workers');                                         //Número de trabajadores

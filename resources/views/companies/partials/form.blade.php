@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('email', 'E-mail address') !!}
+                {!! Form::label('email', 'Correo electrónico') !!}
                 {!! Form::text('email', Auth::user()->email, ['class'       => 'form-control',
                                              'disabled'    => 'disabled']) !!}
             </div>
@@ -62,8 +62,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('type_company', 'Tipo de empresa') !!}
-                {!! Form::text('type_company', '', ['class'       => 'form-control',
-                                                    'placeholder' => 'Tipo de empresa']) !!}
+                {!! Form::select('type_company', [
+                    '1' => 'Anónima', '2' => 'Cooperativa', '3' => 'Comandita',
+                    '4' => 'Empresa Asociativa', '5' => 'Empresa Unipersonal', '6' => 'Sociedad Colectiva',
+                    '7' => 'Persona Natural', '8' => 'Otra', '9' => 'No Definida'
+                ], null, ['class' => 'form-control', 'placeholder' => 'Elija una opción...']) !!}
             </div>
         </div>
         <div class="col-md-6">

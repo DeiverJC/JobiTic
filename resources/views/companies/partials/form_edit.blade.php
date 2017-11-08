@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
-                {!! Form::label('business_name', '*Razon social') !!}
+                {!! Form::label('business_name', '*Razón social') !!}
                 {!! Form::text('business_name', $dt->business_name, ['class'      => 'form-control',
                                                                     'placeholder' => 'Nombre de la empresa',
                                                                     'required'    => 'required']) !!}
@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('email', 'E-mail address') !!}
+                {!! Form::label('email', 'Correo electrónico') !!}
                 {!! Form::text('email', Auth::user()->email, ['class'       => 'form-control',
                                                               'disabled'    => 'disabled']) !!}
             </div>
@@ -63,8 +63,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('type_company', 'Tipo de empresa') !!}
-                {!! Form::text('type_company', $dt->type_company, ['class'       => 'form-control',
-                                                    'placeholder' => 'Tipo de empresa']) !!}
+                {!! Form::select('type_company', [
+                    '1' => 'Anónima', '2' => 'Cooperativa', '3' => 'Comandita',
+                    '4' => 'Empresa Asociativa', '5' => 'Empresa Unipersonal', '6' => 'Sociedad Colectiva',
+                    '7' => 'Persona Natural', '8' => 'Otra', '9' => 'No Definida'
+                ], $dt->type_company, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-md-6">

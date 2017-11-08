@@ -26,7 +26,9 @@
                         @include('companies.partials.form_edit', $data)
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        @include('companies.partials._table', $data)
+                        <div class="row">
+                            @include('companies.partials._table', $data)
+                        </div>
                     </div>
                 </div>
             </div>
