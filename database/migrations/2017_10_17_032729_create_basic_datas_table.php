@@ -16,22 +16,23 @@ class CreateBasicDatasTable extends Migration
         Schema::create('basic_datas', function (Blueprint $table) {
             $table->increments('id');
 
-            //BasicData
-            $table->string('business_name', 100);                                   //Razon social
-            $table->string('legal_repre');                                          //Representante legal
+            $table->string('business_name', 100);
+            $table->string('legal_repre');
             $table->enum('type_company', [
                 'anonima', 'cooperativa', 'comandita', 'empresa asociativa',
                 'empresa unipersonal', 'sociedad colectiva', 'persona natural',
                 'otra', 'no definida'
             ])->nullable();
-            $table->enum('hierarchy', ['principal', 'sucursal'])->nullable();       //Jerarquia
-            $table->string('economic_activity');                                    #Cambiar a enum despues.
-            $table->integer('num_workers');                                         //Número de trabajadores
-            $table->enum('nature', ['privada', 'pública', 'mixta'])->nullable();    //Naturaleza
+            $table->enum('hierarchy', ['principal', 'sucursal'])->nullable();
+            $table->string('economic_activity');            //---------------------------> Change by ENUM after.
+            $table->integer('num_workers');
+            $table->enum('nature', ['privada', 'pública', 'mixta'])->nullable();
 
-            //Foreign Key
-            $table->integer('user_id')->unsigned()->index()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });
