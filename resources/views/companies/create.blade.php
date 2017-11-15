@@ -25,7 +25,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                        @include('companies.partials.form')
+                        @include('companies.partials._form')
 
                     </div>
                 </div>
@@ -34,4 +34,8 @@
 
     </div>
 
+@endsection
+
+@section('scripts')
+    @include('companies.partials.scripts.dependent-selects')
 @endsection

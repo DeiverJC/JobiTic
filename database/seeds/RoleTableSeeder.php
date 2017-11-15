@@ -12,6 +12,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('roles')->delete();
         $role = new Role();
         $role->name = 'admin';
         $role->description = 'Administrator';

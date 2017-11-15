@@ -13,6 +13,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->delete();
         $role_candidate_user = Role::where('name', 'candidate_user')->first();
         $role_company_user = Role::where('name', 'company_user')->first();
         $role_admin = Role::where('name', 'admin')->first();

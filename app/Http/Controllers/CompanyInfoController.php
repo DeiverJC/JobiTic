@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\City;
+use App\State;
+use App\Country;
 use App\BasicData;
 use App\ContactInfo;
 use App\LocationData;
@@ -19,7 +22,9 @@ class CompanyInfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('registerInfo', ['except' => ['create', 'store']]);
+        $this->middleware('registerInfo', ['except' => [
+            'create', 'store', 'getStateList', 'getCityList',
+        ]]);
     }
 
     /**
@@ -40,7 +45,8 @@ class CompanyInfoController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        $countries = Country::all();
+        return view('companies.create', compact('countries'));
     }
 
     /**
@@ -51,8 +57,11 @@ class CompanyInfoController extends Controller
      */
     public function store(CompanyInfoRequest $request)
     {
+        $locationData = LocationData::create($request->all());
+        $locationData->location()->create($request->all());
+
         auth()->user()->basicData()->create($request->all());
-        auth()->user()->locationData()->create($request->all());
+        auth()->user()->locationData()->save($locationData);
         auth()->user()->contactInfo()->create($request->all());
 
         return redirect()
@@ -80,13 +89,20 @@ class CompanyInfoController extends Controller
      */
     public function edit($id)
     {
-        $data = auth()->user()
+        /*$data = auth()->user()
             ->join('basic_datas', 'users.id', '=', 'basic_datas.user_id')
             ->join('location_datas', 'users.id', '=', 'location_datas.user_id')
             ->join('contact_infos', 'users.id', '=', 'contact_infos.user_id')
             ->where('users.id', '=', $id)
             ->select('basic_datas.*', 'location_datas.*', 'contact_infos.*')
-            ->get();
+            ->get();*/
+        /*$data2 = auth()->user()->locationData()
+            ->join('locations', 'locationData.id', '=', 'locations.location_data_id' )
+            ->join('cities', 'locations.city_id', '=', 'cities.id')
+            ->join*/
+        // $data = auth()->user()->locationData->location->city->state->country()->get();
+        $data = User::with(['basicData', 'locationData', 'contactInfo'])->get();
+        dd($data);
 
        return view('companies.edit', compact('data'));
     }
@@ -135,5 +151,19 @@ class CompanyInfoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getStateList(Request $request)
+    {
+        $states = State::where('country_id', $request->country_id)
+            ->pluck('name', 'id');
+        return response()->json($states);
+    }
+
+    public function getCityList(Request $request)
+    {
+        $cities = City::where('state_id', $request->state_id)
+            ->pluck('name', 'id');
+        return response()->json($cities);
     }
 }

@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        @include('companies.partials.form_edit', $data)
+                        @include('companies.partials._form_edit', $data)
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
@@ -35,5 +35,9 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    {!! Html::script('js/dependent-select.js') !!}
 @endsection
 

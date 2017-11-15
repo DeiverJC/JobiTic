@@ -17,6 +17,13 @@ class State extends Model
     ];
 
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Get the contry that owns the state.
      */
     public function country()
@@ -30,5 +37,13 @@ class State extends Model
     public function cities()
     {
         return $this->hasMany('App\City');
+    }
+
+    /**
+     * Get the location for the state.
+     */
+    public function location()
+    {
+        return $this->hasOne('App\Location');
     }
 }

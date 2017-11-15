@@ -16,21 +16,16 @@ class CreateLocationDatasTable extends Migration
         Schema::create('location_datas', function (Blueprint $table) {
             $table->increments('id');
 
-            //LocationData
-            $table->string('country', 100);                                         #Despúes Crear DB paises para relacionar.
-            $table->string('departament', 100)->nullable();                         #Despúes Crear DB paises para relacionar.
-            $table->string('municipality', 100)->nullable();                        #Despúes Crear DB paises para relacionar.
-            $table->string('address', 100)->nullable();                             //Dirección
-            $table->Integer('phone_indic')->nullable();                                         //Indicativo del telefono
-            $table->Integer('phone_num');                                           //Número de Teléfono
-            $table->Integer('phone_ext')->nullable();                               //Extensión del telefono
-            $table->Integer('phone2_indic')->nullable();                            //Indicativo del telefono 2
-            $table->Integer('phone2_num')->nullable();                              //Número de Teléfono 2
-            $table->Integer('phone2_ext')->nullable();                              //Extensión del telefono 2
-            $table->bigInteger('celphone')->nullable();                                //Celular
-            $table->string('website')->nullable();                                  //Página Web
+            $table->string('address', 100)->nullable();
+            $table->Integer('phone_indic')->nullable();
+            $table->Integer('phone_num');
+            $table->Integer('phone_ext')->nullable();
+            $table->Integer('phone2_indic')->nullable();
+            $table->Integer('phone2_num')->nullable();
+            $table->Integer('phone2_ext')->nullable();
+            $table->bigInteger('celphone')->nullable();
+            $table->string('website')->nullable();
 
-            //Foreign Key
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

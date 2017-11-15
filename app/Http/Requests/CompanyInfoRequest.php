@@ -26,14 +26,9 @@ class CompanyInfoRequest extends FormRequest
         return [
             'business_name'     => 'required|string|max:255',
             'legal_repre'       => 'required|string|max:255',
-
             'num_workers'       => 'required|numeric',
-
             'economic_activity' => 'required|string|min:6|max:255',
 
-            'country'           => 'required|string|max:255',
-            'departament'       => 'required|string|max:255',
-            'municipality'      => 'required|string|max:255',
             'phone_num'         => 'required|numeric',
 
             'name'              => 'required|string|max:100',

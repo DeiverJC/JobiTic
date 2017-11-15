@@ -12,10 +12,10 @@ class LocationData extends Model
      * @var array
      */
     protected $fillable = [
-        'country', 'departament', 'municipality', 'address',
-        'phone_indic', 'phone_num', 'phone_ext',
-        'phone2_indic', 'phone2_num', 'phone2_ext',
-        'celphone', 'website'
+        'address', 'phone_indic',
+        'phone_num', 'phone_ext',
+        'phone2_indic', 'phone2_num',
+        'phone2_ext', 'celphone', 'website'
     ];
 
     /**
@@ -24,5 +24,13 @@ class LocationData extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Get the location record associated with the locationData.
+     */
+    public function location()
+    {
+        return $this->hasOne('App\Location', 'location_data_id');
     }
 }

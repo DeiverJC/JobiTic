@@ -17,10 +17,10 @@ class CreateLocationsTable extends Migration
             $table->increments('id');
 
             $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')
-                ->references('id')
-                ->on('cities')
-                ->onDelete('cascade');
+            $table->integer('location_data_id')->unsigned()->index()->nullable();
+
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('location_data_id')->references('id')->on('location_datas')->onDelete('cascade');
 
             $table->timestamps();
         });

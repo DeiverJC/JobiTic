@@ -29,4 +29,12 @@ class Country extends Model
     {
         return $this->hasMany('App\Stated');
     }
+
+    /**
+     * Get the location for the country.
+     */
+    public function location()
+    {
+        return $this->hasOne('App\Location');
+    }
 }
