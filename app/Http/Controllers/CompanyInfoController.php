@@ -89,22 +89,33 @@ class CompanyInfoController extends Controller
      */
     public function edit($id)
     {
-        /*$data = auth()->user()
+        $data = auth()->user()
             ->join('basic_datas', 'users.id', '=', 'basic_datas.user_id')
             ->join('location_datas', 'users.id', '=', 'location_datas.user_id')
             ->join('contact_infos', 'users.id', '=', 'contact_infos.user_id')
             ->where('users.id', '=', $id)
             ->select('basic_datas.*', 'location_datas.*', 'contact_infos.*')
-            ->get();*/
-        /*$data2 = auth()->user()->locationData()
-            ->join('locations', 'locationData.id', '=', 'locations.location_data_id' )
-            ->join('cities', 'locations.city_id', '=', 'cities.id')
-            ->join*/
-        // $data = auth()->user()->locationData->location->city->state->country()->get();
-        $data = User::with(['basicData', 'locationData', 'contactInfo'])->get();
-        dd($data);
+            ->get();
 
-       return view('companies.edit', compact('data'));
+        $location = auth()->user()->locationData->location()
+            ->join('cities', 'locations.city_id', '=', 'cities.id')
+            ->join('states', 'cities.state_id', '=', 'states.id')
+            ->join('countries', 'states.country_id', '=', 'countries.id')
+            ->select(
+                    'locations.id',
+                    'cities.id AS city_id',
+                    'cities.name AS city_name',
+                    'states.id AS state_id',
+                    'states.name AS state_name',
+                    'countries.id AS country_id',
+                    'countries.name AS country_name'
+            )->first();
+
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+
+       return view('companies.edit', compact('data', 'location', 'countries', 'states', 'cities'));
     }
 
     /**
@@ -116,26 +127,30 @@ class CompanyInfoController extends Controller
      */
     public function update(CompanyInfoRequest $request, $id)
     {
-        $bd = $request->only([
+        // dd($location);
+        // $location = $request->only(['city_id']);
+        // auth()->user()->locationData->location()->update($location);
+
+        auth()->user()->locationData->location()->update($request->only(['city_id']));
+
+        $basic_data = $request->only([
             'business_name', 'legal_repre', 'type_company',
             'hierarchy', 'economic_activity', 'num_workers','nature',
         ]);
-
-        $ld = $request->only([
-            'country', 'departament', 'municipality', 'address',
+        $location_data = $request->only([
+            'address',
             'phone_indic', 'phone_num', 'phone_ext','phone2_indic',
             'phone2_num', 'phone2_ext', 'celphone', 'website',
         ]);
-
-        $ci = $request->only([
+        $contact_info = $request->only([
             'name', 'surnames', 'position', 'email',
             'phone_indic_hr', 'phone_num_hr', 'phone_ext_hr',
             'phone2_indic_hr', 'phone2_num_hr', 'phone2_ext_hr',
         ]);
 
-        auth()->user()->basicData()->update($bd);
-        auth()->user()->locationData()->update($ld);
-        auth()->user()->contactInfo()->update($ci);
+        auth()->user()->basicData()->update($basic_data);
+        auth()->user()->locationData()->update($location_data);
+        auth()->user()->contactInfo()->update($contact_info);
 
         return redirect()->route('company.index')
                     ->with('status', 'Datos actualizados exitosamente');

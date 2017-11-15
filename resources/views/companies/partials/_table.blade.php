@@ -44,15 +44,15 @@
         <tbody>
             <tr>
                 <th>País</th>
-                <td colspan="3">{{ $dt->country }}</td>
+                <td colspan="3">{{ $location->country_name }}</td>
             </tr>
             <tr>
                 <th>Departamento</th>
-                <td colspan="3">{{ $dt->departament }}</td>
+                <td colspan="3">{{ $location->state_name }}</td>
             </tr>
             <tr>
-                <th>Municipio</th>
-                <td colspan="3">{{ $dt->municipality }}</td>
+                <th>Ciudad</th>
+                <td colspan="3">{{ $location->city_name }}</td>
             </tr>
             <tr>
                 <th>Dirección</th>

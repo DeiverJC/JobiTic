@@ -112,7 +112,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('country', '*Pais') !!}
-
+                <select id="country" class="form-control" name="country" required>
+                    <option selected="selected" value="{{ $location->country_id }}">{{ $location->country_name }}</option>
+                    @foreach($countries as $country)
+                        @unless($country->id === $location->country_id)
+                            <option value={{ $country->id }}>{{ $country->name }}</option>
+                        @endunless
+                    @endforeach
+                </select>
 
             </div>
         </div>
@@ -120,6 +127,16 @@
             <div class="form-group">
                 {!! Form::label('state', '*Departamento') !!}
 
+                <select id="state" class="form-control" name="state" required>
+                    <option selected="selected" value="{{ $location->state_id }}">{{ $location->state_name }}</option>
+                    @foreach($states as $state)
+                        @if($state->country_id === $location->country_id)
+                            @unless($state->id === $location->state_id)
+                                <option value={{ $state->id }}>{{ $state->name }}</option>
+                            @endunless
+                        @endif
+                    @endforeach
+                </select>
 
             </div>
         </div>
@@ -130,6 +147,16 @@
             <div class="form-group">
                 {!! Form::label('city', '*Ciudad') !!}
 
+                <select id="city" class="form-control" name="city_id" required>
+                    <option selected="selected" value="{{ $location->city_id }}">{{ $location->city_name }}</option>
+                    @foreach($cities as $city)
+                        @if($city->state_id === $location->state_id)
+                            @unless($city->id === $location->city_id)
+                                <option value={{ $city->id }}>{{ $city->name }}</option>
+                            @endunless
+                        @endif
+                    @endforeach
+                </select>
 
             </div>
         </div>
