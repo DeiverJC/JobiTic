@@ -61,15 +61,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role')->withTimestamps();
     }
 
+    /**
+     * Get the job offers for the user.
+     */
+    public function jobOffers()
+    {
+        return $this->hasMany('App\JobOffer');
+    }
+
     //------------End Relationship------------
 
-    /*public function hasInfo()
-    {
-        $data = Auth::user()->basicData()->get();
-
-        return $data;
-
-    }*/
 
     //------------Start functions roles------------
 

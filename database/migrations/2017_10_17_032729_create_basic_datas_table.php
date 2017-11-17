@@ -24,7 +24,7 @@ class CreateBasicDatasTable extends Migration
                 'otra', 'no definida'
             ])->nullable();
             $table->enum('hierarchy', ['principal', 'sucursal'])->nullable();
-            $table->string('economic_activity');            //---------------------------> Change by ENUM after.
+            $table->string('economic_activity');     // Change by ENUM after.
             $table->integer('num_workers');
             $table->enum('nature', ['privada', 'pública', 'mixta'])->nullable();
 

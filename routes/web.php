@@ -23,4 +23,5 @@ Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
 Route::get('get-state-list', 'CompanyInfoController@getStateList');
 Route::get('get-city-list', 'CompanyInfoController@getCityList');
 
+Route::resource('job-offer', 'JobOfferController');
 
