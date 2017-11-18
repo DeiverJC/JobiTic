@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\JobOffer;
 use Illuminate\Http\Request;
+use App\Http\Requests\JobOfferRequest;
 
 class JobOfferController extends Controller
 {
@@ -35,7 +36,11 @@ class JobOfferController extends Controller
      */
     public function create()
     {
-        return view('job-offers.create');
+        $data = auth()->user()->contactInfo->email;
+
+        $jobOffer = null;
+
+        return view('job-offers.create', compact('data', 'jobOffer'));
     }
 
     /**
@@ -44,9 +49,12 @@ class JobOfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobOfferRequest $request)
     {
-        //
+        auth()->user()->jobOffers()->create($request->all());
+
+        return redirect()->route('company.index')
+            ->with('status', 'Oferta creada exitosamente!!');
     }
 
     /**
@@ -68,7 +76,9 @@ class JobOfferController extends Controller
      */
     public function edit(JobOffer $jobOffer)
     {
-        //
+        $data = auth()->user()->contactInfo->email;
+
+        return view('job-offers.edit', compact('jobOffer', 'data'));
     }
 
     /**
@@ -78,9 +88,12 @@ class JobOfferController extends Controller
      * @param  \App\JobOffer  $jobOffer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JobOffer $jobOffer)
+    public function update(JobOfferRequest $request, JobOffer $jobOffer)
     {
-        //
+        $jobOffer->update($request->all());
+
+        return redirect()->route('company.index')
+            ->with('status', 'La oferta fue actualizada!!');
     }
 
     /**
@@ -91,6 +104,9 @@ class JobOfferController extends Controller
      */
     public function destroy(JobOffer $jobOffer)
     {
-        //
+        $jobOffer->delete();
+
+        return redirect()->route('company.index')
+            ->with('status', 'La oferta ha sido eliminada!!');
     }
 }

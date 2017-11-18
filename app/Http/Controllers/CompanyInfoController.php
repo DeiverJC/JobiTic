@@ -34,8 +34,10 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
+        $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->get();
         $dataUser = auth()->user()->basicData()->first();
-        return view('companies.index', compact('dataUser'));
+
+        return view('companies.index', compact('dataUser', 'jobOffers'));
     }
 
     /**

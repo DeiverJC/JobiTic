@@ -34,7 +34,10 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
-                            @include('companies.partials._table', ['data' => $data, 'location' => $location])
+                            @include('companies.partials._table', [
+                                'data'      => $data,
+                                'location'  => $location,
+                                ])
                         </div>
                     </div>
                 </div>
