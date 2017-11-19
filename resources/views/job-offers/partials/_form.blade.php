@@ -41,31 +41,41 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="form-group{{ $errors->has('offer_country') ? ' has-error' : '' }}">
-                {!! Form::label('offer_country', 'País') !!}
-                {!! Form::text('offer_country', null, ['class' => 'form-control']) !!}
 
-                @if ($errors->has('offer_country'))
-                    <span class="help-block text-warning">
-                        <strong>{{ $errors->first('offer_country') }}</strong>
-                    </span>
-                @endif
+    @if( empty($jobOffer) )
+
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('country', 'País') !!}
+                {!! Form::select('country', $countries->pluck('name', 'id'), null, [
+                    'class' => 'form-control',
+                    'id' => 'country',
+                    'required' => 'required',
+                    'placeholder' => 'Elija país...'
+                    ]) !!}
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group{{ $errors->has('offer_city') ? ' has-error' : '' }}">
-                {!! Form::label('offer_city', 'Ciudad') !!}
-                {!! Form::text('offer_city', null, ['class' => 'form-control']) !!}
-
-                @if ($errors->has('offer_city'))
-                    <span class="help-block text-warning">
-                        <strong>{{ $errors->first('offer_city') }}</strong>
-                    </span>
-                @endif
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('state', 'Departamento') !!}
+                {!! Form::select('state',[], null, [
+                    'id' => 'state',
+                    'class' => 'form-control',
+                    'required' => 'required',
+                    ] ) !!}
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('city', 'Ciudad') !!}
+                {!! Form::select('city_id', [], null, [
+                    'id' => 'city',
+                    'class' => 'form-control',
+                    'required' => 'required',
+                    ]) !!}
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="form-group{{ $errors->has('remote') ? ' has-error' : '' }}">
                 {!! Form::label('remote', '¿Es remoto?') !!}
                 {!! Form::select('remote', [1 => 'Si', 2 => 'No'], NULL, [
@@ -80,6 +90,35 @@
                 @endif
             </div>
         </div>
+
+    @else
+
+        @include('job-offers.partials._location_job_form', [
+            'countries' => $countries,
+            'states'    => $states,
+            'cities'    => $cities,
+        ])
+
+    @endif
+
+        <div class="col-md-3">
+
+            <div class="form-group{{ $errors->has('remote') ? ' has-error' : '' }}">
+                {!! Form::label('remote', '¿Es remoto?') !!}
+                {!! Form::select('remote', [1 => 'Si', 2 => 'No'], NULL, [
+                    'class' => 'form-control',
+                    'placeholder' => 'Elija una tipo...',
+                    'required' => 'required']) !!}
+
+                @if ($errors->has('remote'))
+                    <span class="help-block text-warning">
+                        <strong>{{ $errors->first('remote') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+        </div>
+
     </div>
     <br>
     <h3>Remuneración</h3>
@@ -124,7 +163,7 @@
         <div class="col-md-3">
             <div class="form-group{{ $errors->has('type_salary') ? ' has-error' : '' }}">
                 {!! Form::label('type_salary', 'Tipo de salario') !!}
-                {!! Form::select('type_salary', [1 => 'Anual', 2 => 'Mensual'], NULL, [
+                {!! Form::select('type_salary', [1 => 'Anual', 2 => 'Mensual'], null, [
                     'class' => 'form-control',
                     'placeholder' => 'Elija una tipo...',
                     'required' => 'required']) !!}
@@ -143,10 +182,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('', 'Habilidades') !!}
-                {!! Form::text('', '', ['class' => 'form-control',
-                    'placeholder' => 'JavaScript, Laravel, Bootstrap, GitHub, Mysql',
-                    'disabled' => 'disabled']) !!}
+                {!! Form::label('select-skills', 'Habilidades') !!}
+                {!! Form::select('skills[]', $skills->pluck('name', 'id'), null, [
+                    'id' => 'select-skills', 'multiple' => 'multiple']) !!}
             </div>
         </div>
     </div>

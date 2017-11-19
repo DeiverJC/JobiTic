@@ -34,7 +34,13 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
+        /*$jobOffer = auth()->user()->jobOffers()->find(1);
+        dd($jobOffer->location
+            ->join('cities', 'cities.id', '=', 'locations.city_id')
+            ->select('cities.name')->get());*/
+
         $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->get();
+
         $dataUser = auth()->user()->basicData()->first();
 
         return view('companies.index', compact('dataUser', 'jobOffers'));
@@ -99,6 +105,7 @@ class CompanyInfoController extends Controller
             ->select('basic_datas.*', 'location_datas.*', 'contact_infos.*')
             ->get();
 
+        // Optimize later :)
         $location = auth()->user()->locationData->location()
             ->join('cities', 'locations.city_id', '=', 'cities.id')
             ->join('states', 'cities.state_id', '=', 'states.id')

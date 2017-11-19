@@ -40,7 +40,15 @@ class Location extends Model
     }
 
     /**
-     * Get the user that owns the phone.
+     * Get the job offer that owns the location.
+     */
+    public function jobOffer()
+    {
+        return $this->belongsTo('App\JobOffer');
+    }
+
+    /**
+     * Get the location data that owns the location.
      */
     public function locationData()
     {

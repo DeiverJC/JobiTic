@@ -26,8 +26,6 @@ class JobOfferRequest extends FormRequest
         return [
             'title'         => 'required|string|max:125',
             'type_offer'    => 'required|min:1',
-            'offer_country' => 'required',
-            'offer_city'    => 'required',
             'remote'        => 'required|min:1',
             'salary_from'   => 'required|integer',
             'salary_until'  => 'required|integer',

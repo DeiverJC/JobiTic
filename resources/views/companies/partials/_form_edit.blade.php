@@ -120,13 +120,12 @@
                         @endunless
                     @endforeach
                 </select>
-
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('state', '*Departamento') !!}
 
+                {!! Form::label('state', '*Departamento') !!}
                 <select id="state" class="form-control" name="state" required>
                     <option selected="selected" value="{{ $location->state_id }}">{{ $location->state_name }}</option>
                     @foreach($states as $state)

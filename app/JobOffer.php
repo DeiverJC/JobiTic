@@ -14,8 +14,6 @@ class JobOffer extends Model
     protected $fillable = [
         'title',
         'type_offer',
-        'offer_country',
-        'offer_city',
         'remote',
         'salary_from',
         'salary_until',
@@ -31,6 +29,22 @@ class JobOffer extends Model
     public function user()
     {
         return $this->belongTo('App\User');
+    }
+
+    /**
+     * Get the location record associated with the job offer.
+     */
+    public function location()
+    {
+        return $this->hasOne('App\Location');
+    }
+
+    /**
+     * The skills that belong to the job offer.
+     */
+    public function skills()
+    {
+        return $this->belongsToMany('App\Skill');
     }
 
 

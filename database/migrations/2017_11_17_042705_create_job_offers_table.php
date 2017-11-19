@@ -18,8 +18,6 @@ class CreateJobOffersTable extends Migration
 
             $table->string('title');
             $table->enum('type_offer', ['Medio tiempo', 'Timepo completo', 'Proyecto']);
-            $table->string('offer_country');    // Later change to dynamic
-            $table->string('offer_city');       // Later change to dynamic
             $table->enum('remote', ['Si', 'No']);
             $table->integer('salary_from');
             $table->integer('salary_until');

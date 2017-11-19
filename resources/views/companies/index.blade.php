@@ -28,19 +28,20 @@
                 @else
                     @foreach($jobOffers as $jobOffer)
                         <div class="col-md-12">
-                                <div class="float-right">
-                                    <a href="{{ route('job-offer.edit', $jobOffer->id) }}" class="btn-sm btn-info card-link">
-                                        Editar
-                                    </a>
-                                    {!! Form::model($jobOffer, ['route' => ['job-offer.destroy', $jobOffer->id]]) !!}
-                                            {!! Form::submit('Eliminar', ['class' => 'btn-danger btn-sm card-link']) !!}
-                                    {!! Form::close() !!}
-                                </div>
-
+                            <div class="btn-group float-right">
+                                {!! Form::open(['route' => ['job-offer.destroy', $jobOffer->id], 'method' => 'delete']) !!}
+                                        {!! Form::submit('Eliminar', ['class' => 'btn-sm btn-danger card-link']) !!}
+                                {!! Form::close() !!}
+                                <a href="{{ route('job-offer.edit', $jobOffer->id) }}" class="btn-sm btn-info card-link">
+                                    Editar
+                                </a>
+                            </div>
                         <a href="#" class="card-link">
                                 <h4 class="card-title">{{ $jobOffer->title }}</h4>
                                 <span class="float-right text-gray-dark">{{ $jobOffer->created_at->diffForHumans() }}</span>
-                                <p class="card-subtitle">{{ $jobOffer->offer_country }} - {{ $jobOffer->offer_city }}</p>
+                                <p class="card-subtitle">
+                                    {{ $jobOffer->location->city->state->country->name }} - {{ $jobOffer->location->city->name }}
+                                </p>
                             <hr>
                         </a>
                     </div>

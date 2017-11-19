@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
+use App\Skill;
+use App\State;
+use App\Country;
 use App\JobOffer;
 use Illuminate\Http\Request;
 use App\Http\Requests\JobOfferRequest;
@@ -40,7 +44,11 @@ class JobOfferController extends Controller
 
         $jobOffer = null;
 
-        return view('job-offers.create', compact('data', 'jobOffer'));
+        $skills = Skill::all();
+
+        $countries = Country::all();
+
+        return view('job-offers.create', compact('data', 'jobOffer', 'skills', 'countries'));
     }
 
     /**
@@ -51,7 +59,11 @@ class JobOfferController extends Controller
      */
     public function store(JobOfferRequest $request)
     {
-        auth()->user()->jobOffers()->create($request->all());
+        $jobOffer = auth()->user()->jobOffers()->create($request->all());
+
+        $jobOffer->location()->create($request->all());
+
+        $jobOffer->skills()->sync($request->skills);
 
         return redirect()->route('company.index')
             ->with('status', 'Oferta creada exitosamente!!');
@@ -78,7 +90,22 @@ class JobOfferController extends Controller
     {
         $data = auth()->user()->contactInfo->email;
 
-        return view('job-offers.edit', compact('jobOffer', 'data'));
+        $skills = Skill::all();
+
+        $countries = Country::all();
+
+        $states = State::all();
+
+        $cities = City::all();
+
+        return view('job-offers.edit', compact(
+            'jobOffer',
+            'data',
+            'skills',
+            'countries',
+            'states',
+            'cities'
+        ));
     }
 
     /**
@@ -90,7 +117,11 @@ class JobOfferController extends Controller
      */
     public function update(JobOfferRequest $request, JobOffer $jobOffer)
     {
+        $jobOffer->location()->update($request->only(['city_id']));
+
         $jobOffer->update($request->all());
+
+        $jobOffer->skills()->sync($request->skills);
 
         return redirect()->route('company.index')
             ->with('status', 'La oferta fue actualizada!!');
