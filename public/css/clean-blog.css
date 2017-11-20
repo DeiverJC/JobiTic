@@ -248,7 +248,7 @@ header: em;masthead {
   .post-preview > a > .post-title {
     font-size: 36px; } }
 
-.floating-label-form-group {
+/*.floating-label-form-group {
   font-size: 14px;
   position: relative;
   margin-bottom: 0;
@@ -296,7 +296,7 @@ header: em;masthead {
   color: #0085A1; }
 
 form .form-group:first-child .floating-label-form-group {
-  border-top: 1px solid #dee2e6; }
+  border-top: 1px solid #dee2e6; }*/
 
 footer {
   padding: 50px 0 65px; }
@@ -344,7 +344,7 @@ footer {
 }
 
 
-.form-control {
+.header-job-search > .form-control {
   padding: 25px 150px 25px 10px !important;
   border-radius: 0px !important;
   border-left: 0;
@@ -488,3 +488,53 @@ img {
   font-weight: lighter !important;
   color: darkslategrey;
 }
+
+.row-top {
+  position: relative;
+  z-index: 10;
+  bottom: 180px;
+  background-color: #fff;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.overlay-plus {
+  height: 69% !important;
+}
+.overlay-plus-2 {
+  height: 40.9% !important;
+}
+
+.page-heading-plus {
+  padding-top: 150px !important;
+}
+
+.magic-btn {
+  position: relative;
+  z-index: 1000;
+  bottom: -17%;
+    right: 3%;
+}
+
+.magic-btn-2 {
+  position: relative;
+  z-index: 1000;
+  bottom: -45%;
+  right: -6.5%;
+}
+
+.btn-pdd {
+  padding: 4px 16px;
+}
+
+.btn-plus {
+    border: 0 !important;
+    cursor: pointer;
+}
+
+/*button.badge.badge-danger {
+  border: 0 !important;
+}
+
+button.badge.badge-danger:hover {
+  background-color: darkred !important;
+}*/

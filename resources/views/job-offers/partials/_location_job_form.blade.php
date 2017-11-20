@@ -1,8 +1,8 @@
 
         <div class="col-md-3">
 
-            <div class="form-group">
-                {!! Form::label('country', '*Pais') !!}
+            <div class="form-group text-muted">
+                {!! Form::label('country', 'Pais') !!}
                 <select id="country" class="form-control" name="country" required>
                     <option selected="selected" value="{{ $jobOffer->location->city->state->country->id }}">
                         {{ $jobOffer->location->city->state->country->name }}
@@ -18,8 +18,8 @@
         </div>
         <div class="col-md-3">
 
-            <div class="form-group">
-                {!! Form::label('state', '*Departamento') !!}
+            <div class="form-group text-muted">
+                {!! Form::label('state', 'Departamento') !!}
                 <select id="state" class="form-control" name="state" required>
                     <option selected="selected" value="{{ $jobOffer->location->city->state->id }}">
                         {{ $jobOffer->location->city->state->name }}
@@ -35,10 +35,10 @@
             </div>
 
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 text-muted">
 
             <div class="form-group">
-                {!! Form::label('city', '*Ciudad') !!}
+                {!! Form::label('city', 'Ciudad') !!}
                 <select id="city" class="form-control" name="city_id" required>
                     <option selected="selected" value="{{ $jobOffer->location->city->id }}">
                         {{ $jobOffer->location->city->name }}

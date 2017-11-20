@@ -5,13 +5,14 @@
     {{ method_field('PUT') }}
 @endif
 
-    <h3>Información principal</h3>
-    <hr>
+    <h3 class="text-muted">Información principal</h3>
+    <br>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('title', 'Titulo de la oferta') !!}
-                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                {!! Form::text('title', null, ['class' => 'form-control',
+                'placeholder' => 'Titulo de la oferta']) !!}
 
                 @if ($errors->has('title'))
                     <span class="help-block text-warning">
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group{{ $errors->has('type_offer') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('type_offer') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('type_offer', 'Tipo de oferta') !!}
                 {!! Form::select('type_offer', [
                         1 => 'Medio tiempo',
@@ -45,7 +46,7 @@
     @if( empty($jobOffer) )
 
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group text-muted">
                 {!! Form::label('country', 'País') !!}
                 {!! Form::select('country', $countries->pluck('name', 'id'), null, [
                     'class' => 'form-control',
@@ -56,7 +57,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group text-muted">
                 {!! Form::label('state', 'Departamento') !!}
                 {!! Form::select('state',[], null, [
                     'id' => 'state',
@@ -66,7 +67,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group text-muted">
                 {!! Form::label('city', 'Ciudad') !!}
                 {!! Form::select('city_id', [], null, [
                     'id' => 'city',
@@ -88,7 +89,7 @@
 
         <div class="col-md-3">
 
-            <div class="form-group{{ $errors->has('remote') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('remote') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('remote', '¿Es remoto?') !!}
                 {!! Form::select('remote', [1 => 'Si', 2 => 'No'], NULL, [
                     'class' => 'form-control',
@@ -106,11 +107,11 @@
 
     </div>
     <br>
-    <h3>Remuneración</h3>
-    <hr>
+    <h3 class="text-muted">Remuneración</h3>
+    <br>
     <div class="row">
         <div class="col-md-3">
-            <div class="form-group{{ $errors->has('salary_from') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('salary_from') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('salary_from', 'Salario desde') !!}
                 {!! Form::number('salary_from', null, ['class' => 'form-control']) !!}
 
@@ -122,7 +123,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group{{ $errors->has('salary_until') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('salary_until') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('salary_until', 'Salario hasta') !!}
                 {!! Form::number('salary_until', null, ['class' => 'form-control']) !!}
 
@@ -134,7 +135,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group{{ $errors->has('cunrrency') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('cunrrency') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('cunrrency', 'Moneda') !!}
                 {!! Form::text('cunrrency', NULL, ['class' => 'form-control', 'placeholder' => 'COP, USD...']) !!}
 
@@ -146,7 +147,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group{{ $errors->has('type_salary') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('type_salary') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('type_salary', 'Tipo de salario') !!}
                 {!! Form::select('type_salary', [1 => 'Anual', 2 => 'Mensual'], null, [
                     'class' => 'form-control',
@@ -162,11 +163,11 @@
         </div>
     </div>
     <br>
-    <h3>Habilidades</h3>
-    <hr>
+    <h3 class="text-muted">Habilidades</h3>
+    <br>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group">
+            <div class="form-group text-muted">
                 {!! Form::label('select-skills', 'Habilidades') !!}
                 {!! Form::select('skills[]', $skills->pluck('name', 'id'), null, [
                     'id' => 'select-skills', 'multiple' => 'multiple']) !!}
@@ -174,11 +175,11 @@
         </div>
     </div>
     <br>
-    <h3>Información detallada</h3>
-    <hr>
+    <h3 class="text-muted">Información detallada</h3>
+    <br>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('description', 'Descripción de la oferta') !!}
                 {!! Form::textArea('description', NULL, ['class' => 'form-control',
                     'placeholder' => 'Redacte la descripción de su oferta laboral']) !!}
@@ -193,7 +194,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group{{ $errors->has('restrictions') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('restrictions') ? ' has-error' : '' }} text-muted">
                 {!! Form::label('restrictions', 'Restricciones de la oferta') !!}
                 {!! Form::textArea('restrictions', NULL, ['class' => 'form-control',
                     'placeholder' => 'Redacte las restricciones de su oferta laboral']) !!}
@@ -207,11 +208,11 @@
         </div>
     </div>
     <br>
-    <h3>Como será contactado</h3>
-    <hr>
+    <h3 class="text-muted">Como será contactado</h3>
+    <br>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group">
+            <div class="form-group text-muted">
                 {!! form::text('', 'Enviar hoja de vida a: '
                     .$data,
                     ['class' => 'form-control', 'rows' => '1', 'disabled' => 'disabled']) !!}

@@ -1,23 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('styles')
     {!! Html::style('css/selectize.css') !!}
 @endsection
 
+@section('header')
+    @include('layouts.partials._header_offer')
+@endsection
+
 @section('content')
-
-    <h1>Crear una oferta de trabajo</h1>
-
-    <div class="col-md-12">
-        <br>
-        @include('job-offers.partials._form', [
-            'data'      => $data,
-            'jobOffer'  => $jobOffer,
-            'skills'    => $skills,
-            'countries' => $countries,
-            ])
+    <div class="container">
+        <div class="row row-top">
+            <div class="col-md-12">
+                <br>
+                @include('job-offers.partials._form', [
+                    'data'      => $data,
+                    'jobOffer'  => $jobOffer,
+                    'skills'    => $skills,
+                    'countries' => $countries,
+                    ])
+            </div>
+        </div>
     </div>
-
 @endsection
 
 @section('scripts')
