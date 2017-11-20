@@ -60,6 +60,10 @@
                                 </article>
                             </div>
                         @endforeach
+                        <br>
+                        <nav aria-label="Page navigation example">
+                            {{ $jobOffers->render() }}
+                        </nav>
                     @endif
                     </div>
                 </div>

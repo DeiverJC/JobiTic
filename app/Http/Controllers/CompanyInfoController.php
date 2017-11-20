@@ -38,7 +38,7 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->get();
+        $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->paginate(10);
 
         $dataUser = auth()->user()->basicData()->first();
 
@@ -52,9 +52,11 @@ class CompanyInfoController extends Controller
      */
     public function create()
     {
+        $data = null;
+
         $countries = Country::all();
 
-        return view('companies.create', compact('countries'));
+        return view('companies.create', compact('countries', 'data'));
     }
 
     /**

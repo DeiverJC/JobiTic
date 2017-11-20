@@ -2,7 +2,8 @@
     {!! Form::open(['route' => 'company.store']) !!}
 
 {{-- - - - - - - - - Basic Data - - - - - - - - --}}
-    <h3 class="title-form">Información básica</h3>
+    <h3 class="text-primary">Información básica</h3>
+    <br>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
@@ -105,8 +106,9 @@
     </div>
 
 {{-- - - - - - - - - Location Data - - - - - - - - --}}
-    <h3 class="title-form">Localizacion de la empresa</h3>
-
+    <br>
+    <h3 class="text-primary">Localizacion de la empresa</h3>
+    <br>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -202,7 +204,9 @@
     </div>
 
 {{-- - - - - - - - - contact infomation - - - - - - - - --}}
-    <h3 class="title-form">Información de contacto</h3>
+    <br>
+    <h3 class="text-primary">Información de contacto</h3>
+    <br>
 
     <div class="row">
         <div class="col-md-6">

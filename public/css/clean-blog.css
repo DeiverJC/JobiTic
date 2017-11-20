@@ -6,7 +6,7 @@
 body {
   font-size: 20px;
   color: #212529;
-  font-family: Oswald, 'Open Sans', 'Times New Roman', serif; }
+  font-family: Oswald, 'Open Sans', arial; }
 
 p {
   line-height: 1.5;
@@ -190,7 +190,7 @@ header: em;masthead {
       line-height: 1.1;
       display: block;
       margin: 10px 0 0;
-      font-family: Oswald,sans-serif, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      font-family: Oswald, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
     @media only screen and (min-width: 768px) {
       header.masthead .page-heading h1,
       header.masthead .site-heading h1 {
@@ -210,7 +210,7 @@ header: em;masthead {
     font-size: 20px;
     font-weight: 300;
     font-style: italic;
-    font-family: 'Lora', 'Times New Roman', serif; }
+    font-family: 'Lora', 'Helvetica', serif; }
     header.masthead .post-heading .meta a {
       color: #fff; }
   @media only screen and (min-width: 768px) {
@@ -315,7 +315,7 @@ footer {
   letter-spacing: 1px;
   text-transform: uppercase;
   border-radius: 4;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font-family: 'Open Sans', Arial, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 .btn-primary {
   background-color: #0085A1;
@@ -347,29 +347,29 @@ footer {
 .header-job-search > .form-control {
   padding: 25px 150px 25px 10px !important;
   border-radius: 0px !important;
-  border-left: 0;
-  border-right: 0;
+  border-left: 0 !important;
+  border-right: 0 !important;
 }
 
 .input-group-addon {
   background-color: #fff !important;
-  border-radius: 0;
+  border-radius: 0 !important;
   color: #abb4bd !important;
   font-size: 2rem !important;
 }
 .left-input > .input-group-addon {
-  border-radius: 7px 0px 0px 7px;
+  border-radius: 7px 0px 0px 7px !important;
 }
 
 .right-input > .input-group-addon{
-  border-left: 1px solid lightgray;
+  border-left: 1px solid lightgray !important;
 }
 
 
 
 .btn-search > .btn {
   padding: 25.1px 80px !important;
-  border-radius: 0px 7px 7px 0px;
+  border-radius: 0px 7px 7px 0px !important;
 }
 
 section {
@@ -385,7 +385,7 @@ section {
 }
 .section-header span {
   color: #c8d0d7;
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;

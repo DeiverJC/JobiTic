@@ -1,11 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    @include('layouts.partials._header_register')
+@endsection
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="row row-top justify-content-md-center">
         <div class="col-md-6">
-            <div class="card card-default">
-                <div class="card-header">Registrarse</div>
+            <div class="card card-default" style="border: 0; padding-top: 20px;">
 
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">

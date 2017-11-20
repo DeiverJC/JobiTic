@@ -1,18 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    @include('layouts.partials._header_auth')
+@endsection
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center row-top">
         <div class="col-md-6">
-            <div class="card bg-default">
-                <div class="card-header">Iniciar sesión</div>
+            <div class="card bg-default" style="border: 0; padding-top: 20px;">
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4">Correo Electronico</label>
+                            <label for="email" class="col-md-6">Correo Electronico</label>
 
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>

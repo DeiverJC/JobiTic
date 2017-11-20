@@ -1,6 +1,6 @@
 <div class="col-md-12">
 @foreach($data as $dt)
-    <h3 class="alert alert-danger">Información básica</h3>
+    <h3 class="alert alert-light text-center">Información básica</h3>
     <table class="table table-hover">
         <tbody>
             <tr>
@@ -39,7 +39,7 @@
     </table>
 </div>
 <div class="col-md-12">
-    <h3 class="alert alert-danger">Localizacion de la empresa</h3>
+    <h3 class="alert  alert-light text-center">Localizacion de la empresa</h3>
     <table class="table table-hover">
         <tbody>
             <tr>
@@ -78,7 +78,7 @@
     </table>
 </div>
 <div class="col-md-12">
-    <h3 class="alert alert-danger">Información de contacto</h3>
+    <h3 class="alert  alert-light text-center">Información de contacto</h3>
     <table class="table table-hover">
         <tbody>
             <tr>
