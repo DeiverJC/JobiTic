@@ -13,14 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
+
 Route::get('get-state-list', 'CompanyInfoController@getStateList');
+
 Route::get('get-city-list', 'CompanyInfoController@getCityList');
 
 Route::resource('job-offer', 'JobOfferController');

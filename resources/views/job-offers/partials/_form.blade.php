@@ -75,21 +75,6 @@
                     ]) !!}
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group{{ $errors->has('remote') ? ' has-error' : '' }}">
-                {!! Form::label('remote', '¿Es remoto?') !!}
-                {!! Form::select('remote', [1 => 'Si', 2 => 'No'], NULL, [
-                    'class' => 'form-control',
-                    'placeholder' => 'Elija una tipo...',
-                    'required' => 'required']) !!}
-
-                @if ($errors->has('remote'))
-                    <span class="help-block text-warning">
-                        <strong>{{ $errors->first('remote') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
 
     @else
 

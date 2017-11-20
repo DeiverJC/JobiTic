@@ -1,0 +1,51 @@
+<main>
+    <section>
+        <div class="container">
+
+            <header class="section-header">
+                <span>últimas ofertas</span>
+                <h2>últimas ofertas</h2>
+            </header>
+
+        @foreach($jobOffers as $jobOffer)
+            <div class="col-xs-12">
+                <article class="article-job">
+                    <a href="#" class="item-block">
+                        <header>
+                            <img src="img/logo.jpg">
+                            <div class="header-meta">
+                                <span class="location">
+                                    <i class="fa fa-location-arrow"></i>
+                                    {{ $jobOffer->location->city->state->country->name }} - {{ $jobOffer->location->city->name }}
+                                </span>
+                                @if($jobOffer->type_offer === 'Medio tiempo')
+                                    <span class="badge badge-info">{{ $jobOffer->type_offer }}</span>
+                                @elseif($jobOffer->type_offer === 'Timepo completo')
+                                    <span class="badge badge-success">{{ $jobOffer->type_offer }}</span>
+                                @else
+                                    <span class="badge badge-dark">{{ $jobOffer->type_offer }}</span>
+                                @endif
+
+                            </div>
+                            <div class="hgroup">
+                                <h4>{{ $jobOffer->title }}</h4>
+                                <h5 class="text-muted">
+                                    {{ $jobOffer->user->basicData->business_name }}
+                                </h5>
+                            </div>
+                        </header>
+                    </a>
+                </article>
+            </div>
+        @endforeach
+
+        </div>
+    </section>
+    <br>
+    <br>
+    <p class="text-center">
+        <a href="#" class="btn btn-info">Ver todas las ofertas</a>
+    </p>
+    <br>
+    <br>
+</main>

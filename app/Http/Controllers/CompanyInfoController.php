@@ -22,8 +22,12 @@ class CompanyInfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
         $this->middleware('registerInfo', ['except' => [
-            'create', 'store', 'getStateList', 'getCityList',
+            'create',
+            'store',
+            'getStateList',
+            'getCityList',
         ]]);
     }
 
@@ -34,11 +38,6 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        /*$jobOffer = auth()->user()->jobOffers()->find(1);
-        dd($jobOffer->location
-            ->join('cities', 'cities.id', '=', 'locations.city_id')
-            ->select('cities.name')->get());*/
-
         $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->get();
 
         $dataUser = auth()->user()->basicData()->first();
@@ -54,6 +53,7 @@ class CompanyInfoController extends Controller
     public function create()
     {
         $countries = Country::all();
+
         return view('companies.create', compact('countries'));
     }
 
@@ -66,15 +66,18 @@ class CompanyInfoController extends Controller
     public function store(CompanyInfoRequest $request)
     {
         $locationData = LocationData::create($request->all());
+
         $locationData->location()->create($request->all());
 
         auth()->user()->basicData()->create($request->all());
+
         auth()->user()->locationData()->save($locationData);
+
         auth()->user()->contactInfo()->create($request->all());
 
         return redirect()
-                ->route('company.index')
-                ->with('status', 'Información guardada exitosamente!!');
+            ->route('company.index')
+            ->with('status', 'Información guardada exitosamente!!');
     }
 
     /**
@@ -121,10 +124,18 @@ class CompanyInfoController extends Controller
             )->first();
 
         $countries = Country::all();
+
         $states = State::all();
+
         $cities = City::all();
 
-       return view('companies.edit', compact('data', 'location', 'countries', 'states', 'cities'));
+       return view('companies.edit', compact(
+            'data',
+            'location',
+            'countries',
+            'states',
+            'cities'
+        ));
     }
 
     /**
@@ -136,10 +147,6 @@ class CompanyInfoController extends Controller
      */
     public function update(CompanyInfoRequest $request, $id)
     {
-        // dd($location);
-        // $location = $request->only(['city_id']);
-        // auth()->user()->locationData->location()->update($location);
-
         auth()->user()->locationData->location()->update($request->only(['city_id']));
 
         $basic_data = $request->only([
@@ -158,29 +165,21 @@ class CompanyInfoController extends Controller
         ]);
 
         auth()->user()->basicData()->update($basic_data);
+
         auth()->user()->locationData()->update($location_data);
+
         auth()->user()->contactInfo()->update($contact_info);
 
         return redirect()->route('company.index')
-                    ->with('status', 'Datos actualizados exitosamente');
+            ->with('status', 'Datos actualizados exitosamente');
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function getStateList(Request $request)
     {
         $states = State::where('country_id', $request->country_id)
             ->pluck('name', 'id');
+
         return response()->json($states);
     }
 
@@ -188,6 +187,7 @@ class CompanyInfoController extends Controller
     {
         $cities = City::where('state_id', $request->state_id)
             ->pluck('name', 'id');
+
         return response()->json($cities);
     }
 }
