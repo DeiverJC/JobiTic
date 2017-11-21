@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-    @include('layouts.partials._header_company_create', $data)
+    @include('layouts.partials._header_company_create', ['data' => $data])
 @endsection
 
 @section('content')

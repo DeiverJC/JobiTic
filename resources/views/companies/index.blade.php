@@ -35,22 +35,22 @@
                         @foreach($jobOffers as $jobOffer)
                             <div class="col-md-12">
                                 <div class="magic-btn float-right">
-                                    <a href="{{ route('job-offer.edit', $jobOffer->id) }}" class="btn-sm btn-info btn-pdd">
+                                    <a href="{{ route('job-offer.edit', $jobOffer->id) }}" class="btn-sm btn-info btn-pdd" style="padding: 5px 17px;">
                                         Editar
                                     </a>
                                 </div>
-                                <div class="magic-btn-2 float-right">
+                                <div class="magic-btn-2 float-right" style="right: -8%;">
                                     {!! Form::open(['route' => ['job-offer.destroy', $jobOffer->id], 'method' => 'delete']) !!}
                                         {!! Form::submit('Eliminar', ['class' => 'btn-sm btn-danger btn-plus']) !!}
                                     {!! Form::close() !!}
                                 </div>
 
                                 <article class="article-job">
-                                    <a href="#" class="item-block">
+                                    <a href="{{ route('job-offer.show', $jobOffer->id) }}" class="item-block">
                                         <header>
 
                                             <div class="hgroup">
-                                                <h4>{{ $jobOffer->title }}</h4>
+                                                <h4 class="font-weight-bold">{{ $jobOffer->title }}</h4>
                                                 <h5 class="text-muted">
                                                     {{ $jobOffer->user->basicData->business_name }}
                                                 </h5>
@@ -60,10 +60,6 @@
                                 </article>
                             </div>
                         @endforeach
-                        <br>
-                        <nav aria-label="Page navigation example">
-                            {{ $jobOffers->render() }}
-                        </nav>
                     @endif
                     </div>
                 </div>
@@ -73,7 +69,7 @@
                         <div class="card-body">
                             @if(!empty($dataUser))
                             <h3 class="card-title">{{ $dataUser->business_name }}</h3>
-                            <p class="card-text">{{ $dataUser->economic_activity }}</p>
+                            <p class="card-subtitle">{{ $dataUser->economic_activity }}</p>
                             <p class="card-text">Fecha de inscripción: {{ $dataUser->created_at->format('d/m/Y') }}</p>
                             <div class="text-center">
                                 <a href="{{ route('job-offer.create') }}" class="btn-sm btn-success">Crear oferta</a>

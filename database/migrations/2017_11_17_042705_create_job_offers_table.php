@@ -17,7 +17,7 @@ class CreateJobOffersTable extends Migration
             $table->increments('id');
 
             $table->string('title');
-            $table->enum('type_offer', ['Medio tiempo', 'Timepo completo', 'Proyecto']);
+            $table->enum('type_offer', ['Medio tiempo', 'Tiempo completo', 'Proyecto']);
             $table->enum('remote', ['Si', 'No']);
             $table->integer('salary_from');
             $table->integer('salary_until');

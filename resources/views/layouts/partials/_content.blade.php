@@ -11,12 +11,12 @@
         @foreach($jobOffers as $jobOffer)
             <div class="col-xs-12">
                 <article class="article-job">
-                    <a href="#" class="item-block">
+                    <a href="{{ route('job-offer.show', $jobOffer->id) }}" class="item-block">
                         <header>
                             <img src="img/logo.jpg">
                             <div class="header-meta">
                                 <span class="location">
-                                    <i class="fa fa-location-arrow"></i>
+                                    <i class="fa fa-map-marker"></i>
                                     {{ $jobOffer->location->city->state->country->name }} - {{ $jobOffer->location->city->name }}
                                 </span>
                                 @if($jobOffer->type_offer === 'Medio tiempo')

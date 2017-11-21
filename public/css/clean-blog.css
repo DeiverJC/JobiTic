@@ -6,7 +6,7 @@
 body {
   font-size: 20px;
   color: #212529;
-  font-family: Oswald, 'Open Sans', arial; }
+  font-family: 'Open Sans', Oswald, 'Open Sans', arial; }
 
 p {
   line-height: 1.5;
@@ -210,7 +210,7 @@ header: em;masthead {
     font-size: 20px;
     font-weight: 300;
     font-style: italic;
-    font-family: 'Lora', 'Helvetica', serif; }
+    font-family: 'Open Sans', 'Lora', 'Helvetica', serif; }
     header.masthead .post-heading .meta a {
       color: #fff; }
   @media only screen and (min-width: 768px) {
@@ -337,14 +337,36 @@ footer {
 
 /*Estilos de @DeiverJC*/
 .post-heading h1 {
-  margin-bottom: 20px !important;
+  margin-bottom: 25px !important;
 }
+
 .header-job-search {
   margin-top: 40px;
 }
 
+.post-heading input.form-control {
+    padding: 22px 90px 22px 20px;
+    border: 0;
+    border-radius: 0;
+    font-size: 20px;
+}
+span.input-group-addon {
+    border: 0;
+    font-size: 3rem;
+    border-radius: 0;
+    color: lightgray;
+    background-color: #fff;
+}
 
-.header-job-search > .form-control {
+span#sizing-addon1 {
+    border-radius: 7px 0 0 7px;
+}
+
+span#sizing-addon2 {
+    border-left: 1px solid lightgrey;
+}
+
+/*.header-job-search > .form-control {
   padding: 25px 150px 25px 10px !important;
   border-radius: 0px !important;
   border-left: 0 !important;
@@ -363,9 +385,7 @@ footer {
 
 .right-input > .input-group-addon{
   border-left: 1px solid lightgray !important;
-}
-
-
+}*/
 
 .btn-search > .btn {
   padding: 25.1px 80px !important;
@@ -498,10 +518,13 @@ img {
 }
 
 .overlay-plus {
-  height: 69% !important;
+  height: 65% !important;
 }
 .overlay-plus-2 {
-  height: 40.9% !important;
+  height: 65% !important;
+}
+.overlay-plus-3 {
+    height: 41% !important;
 }
 
 .page-heading-plus {
@@ -512,15 +535,19 @@ img {
   position: relative;
   z-index: 1000;
   bottom: -17%;
-    right: 3%;
+    right: 2%;
 }
 
+.magic-btn-2.float-right {
+    right: -8%;
+}
 .magic-btn-2 {
   position: relative;
   z-index: 1000;
-  bottom: -45%;
-  right: -6.5%;
+  bottom: -48%;
+  right: -8% !important;
 }
+
 
 .btn-pdd {
   padding: 4px 16px;
@@ -529,12 +556,27 @@ img {
 .btn-plus {
     border: 0 !important;
     cursor: pointer;
+    padding: 4px 10.2px;
 }
 
-/*button.badge.badge-danger {
-  border: 0 !important;
+img.img-fluid.float-left {
+    max-width: 8%;
+    margin-right: 15px;
 }
 
-button.badge.badge-danger:hover {
-  background-color: darkred !important;
-}*/
+.card-body {
+  font-family: Montserrat, 'Open Sans';
+}
+
+.card-subtitle {
+  font-weight: lighter;
+}
+
+h1.card-title.text-muted {
+    padding-top: 10px;
+}
+
+p.float-right.text-muted {
+    font-size: 15px;
+    padding-top: 15px;
+}

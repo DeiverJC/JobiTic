@@ -1,5 +1,5 @@
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
-  <div class="overlay overlay-plus-2"></div>
+<header class="masthead" style="background-image: url('img/bg-banner-2.jpg')">
+  <div class="overlay overlay-plus-3"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 mx-auto">
