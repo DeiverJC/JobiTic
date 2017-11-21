@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::get('/', 'IndexController@index');
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('company', 'CompanyInfoController', ['except' => ['destroy']]);
@@ -25,3 +26,4 @@ Route::get('get-city-list', 'CompanyInfoController@getCityList');
 
 Route::resource('job-offer', 'JobOfferController');
 
+Route::post('search', 'IndexController@search')->name('search');
