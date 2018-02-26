@@ -1,5 +1,5 @@
-<header class="masthead" style="background-image: url({{ url('img/about-bg.jpg') }})">
-    <div class="overlay overlay-plus"></div>
+<header class="masthead" style="background-image: url({{ url('img/bg-banner-5.jpg') }})">
+    <div class="overlay overlay-plus" style="height: 60.7% !important;"></div>
     <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">

@@ -39,7 +39,6 @@ class CompanyInfoController extends Controller
     public function index()
     {
         $jobOffers = auth()->user()->jobOffers()->orderBy('id', 'desc')->paginate(10);
-
         $dataUser = auth()->user()->basicData()->first();
 
         return view('companies.index', compact('dataUser', 'jobOffers'));
@@ -53,7 +52,6 @@ class CompanyInfoController extends Controller
     public function create()
     {
         $data = null;
-
         $countries = Country::all();
 
         return view('companies.create', compact('countries', 'data'));
@@ -68,30 +66,15 @@ class CompanyInfoController extends Controller
     public function store(CompanyInfoRequest $request)
     {
         $locationData = LocationData::create($request->all());
-
         $locationData->location()->create($request->all());
 
         auth()->user()->basicData()->create($request->all());
-
         auth()->user()->locationData()->save($locationData);
-
         auth()->user()->contactInfo()->create($request->all());
 
         return redirect()
             ->route('company.index')
             ->with('status', 'Información guardada exitosamente!!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -126,9 +109,7 @@ class CompanyInfoController extends Controller
             )->first();
 
         $countries = Country::all();
-
         $states = State::all();
-
         $cities = City::all();
 
        return view('companies.edit', compact(
@@ -167,9 +148,7 @@ class CompanyInfoController extends Controller
         ]);
 
         auth()->user()->basicData()->update($basic_data);
-
         auth()->user()->locationData()->update($location_data);
-
         auth()->user()->contactInfo()->update($contact_info);
 
         return redirect()->route('company.index')

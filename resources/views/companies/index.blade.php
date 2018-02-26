@@ -86,47 +86,4 @@
     </section>
 </main>
 
-
-    {{-- <div class="col-md-8">
-
-
-
-        <div class="card">
-            <h3 class="card-header">
-                Mis vacantes
-
-                <span class="float-right">
-                        <a href="{{ route('job-offer.create') }}" class="btn btn-info">Crear oferta</a>
-                </span>
-            </h3>
-            <div class="card-body">
-                @if(empty($jobOffers->all()))
-                    <p class="card-text">Aún no publica ofertas.</p>
-                @else
-                    @foreach($jobOffers as $jobOffer)
-                        <div class="col-md-12">
-                            <div class="btn-group float-right">
-                                {!! Form::open(['route' => ['job-offer.destroy', $jobOffer->id], 'method' => 'delete']) !!}
-                                        {!! Form::submit('Eliminar', ['class' => 'btn-sm btn-danger card-link']) !!}
-                                {!! Form::close() !!}
-                                <a href="{{ route('job-offer.edit', $jobOffer->id) }}" class="btn-sm btn-info card-link">
-                                    Editar
-                                </a>
-                            </div>
-                        <a href="#" class="card-link">
-                                <h4 class="card-title">{{ $jobOffer->title }}</h4>
-                                <span class="float-right text-gray-dark">{{ $jobOffer->created_at->diffForHumans() }}</span>
-                                <p class="card-subtitle">
-                                    {{ $jobOffer->location->city->state->country->name }} - {{ $jobOffer->location->city->name }}
-                                </p>
-                            <hr>
-                        </a>
-                    </div>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-
-    </div> --}}
-
 @endsection

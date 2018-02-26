@@ -19,8 +19,8 @@ class JobOfferController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('registerInfo');
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('registerInfo', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -30,7 +30,9 @@ class JobOfferController extends Controller
      */
     public function index()
     {
-        //
+        $jobOffers = JobOffer::latest()->paginate(3);
+
+        return view('job-offers.index', compact('jobOffers'));
     }
 
     /**
@@ -41,11 +43,8 @@ class JobOfferController extends Controller
     public function create()
     {
         $data = auth()->user()->contactInfo->email;
-
         $jobOffer = null;
-
         $skills = Skill::all();
-
         $countries = Country::all();
 
         return view('job-offers.create', compact('data', 'jobOffer', 'skills', 'countries'));
@@ -60,9 +59,7 @@ class JobOfferController extends Controller
     public function store(JobOfferRequest $request)
     {
         $jobOffer = auth()->user()->jobOffers()->create($request->all());
-
         $jobOffer->location()->create($request->all());
-
         $jobOffer->skills()->sync($request->skills);
 
         return redirect()->route('company.index')

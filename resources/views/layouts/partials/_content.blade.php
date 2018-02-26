@@ -45,7 +45,7 @@
     <br>
     <br>
     <p class="text-center">
-        <a href="#" class="btn btn-info">Ver todas las ofertas</a>
+        <a href="{{ route('job-offer.index') }}" class="btn btn-info">Ver todas las ofertas</a>
     </p>
     <br>
     <br>

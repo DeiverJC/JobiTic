@@ -16,20 +16,18 @@ class CreateContactInfosTable extends Migration
         Schema::create('contact_infos', function (Blueprint $table) {
             $table->increments('id');
 
-            //Contact Information of HHRR
-            $table->string('name', 25);                                                     //Nombre
-            $table->string('surnames', 50);                                                 //Apellidos
-            $table->enum('position', ['presidente', 'director', 'gerente',
-                                      'jefe', 'coordinador', 'analista']);                  //Cargo
-            $table->string('email')->unique();                                            //Correo
-            $table->integer('phone_indic_hr')->nullable();                                              //Indicativo del telefono HR
-            $table->integer('phone_num_hr');                                                //Número de Teléfono HR
-            $table->integer('phone_ext_hr')->nullable();                                    //Extensión del telefono HR
-            $table->integer('phone2_indic_hr')->nullable();                                 //Indicativo del telefono 2 HR
-            $table->integer('phone2_num_hr')->nullable();                                   //Número de Teléfono 2 HR
-            $table->integer('phone2_ext_hr')->nullable();                                   //Extensión del telefono 2 HR
+            $table->string('name', 25);
+            $table->string('surnames', 50);
+            $table->enum('position', ['presidente', 'director', 'gerente', 'jefe', 'coordinador', 'analista']);
+            $table->string('email')->unique();
+            $table->integer('phone_indic_hr')->nullable();
+            $table->integer('phone_num_hr');
+            $table->integer('phone_ext_hr')->nullable();
+            $table->integer('phone2_indic_hr')->nullable();
+            $table->integer('phone2_num_hr')->nullable();
+            $table->integer('phone2_ext_hr')->nullable();
 
-            //Foreign Key
+
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
